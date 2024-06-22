@@ -95,7 +95,7 @@
     <div class="message" id="message"></div>
 
     <script>
-        const googleScriptURL = 'https://script.google.com/macros/s/AKfycby43UA58uKX-llUEAdtW143J0uYcx8iR3ZCnf4Ez-GEUGjb-RToCC1s_Pk3A9Kanqxi/exec'; // ใส่ URL ของ Web App ที่ได้จาก Google Apps Script
+        const googleScriptURL = 'https://script.google.com/macros/s/AKfycbxFVC4DXVcNX7okN9Tw9ZAtpG3dwPh9uGKz2WluwxPkxbNKvaFNiXrYZcAJJsTuN59g/exec'; // ใส่ URL ของ Web App ที่ได้จาก Google Apps Script
 
         function checkAnswers() {
             const correctAnswers = {
@@ -151,14 +151,4 @@
                 },
                 body: JSON.stringify({name, studentNumber, score})
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        }
-    </script>
-</body>
-</html>
+           
