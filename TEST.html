@@ -95,6 +95,8 @@
     <div class="message" id="message"></div>
 
     <script>
+        const googleScriptURL = 'https://script.google.com/macros/s/AKfycby43UA58uKX-llUEAdtW143J0uYcx8iR3ZCnf4Ez-GEUGjb-RToCC1s_Pk3A9Kanqxi/exec'; // ใส่ URL ของ Web App ที่ได้จาก Google Apps Script
+
         function checkAnswers() {
             const correctAnswers = {
                 q1: 'ข',
@@ -139,6 +141,23 @@
             // ปิดใช้งานการเลือกคำตอบ
             const radioButtons = document.querySelectorAll('input[type="radio"]');
             radioButtons.forEach(button => button.disabled = true);
+
+            // ส่งข้อมูลไปยัง Google Sheets
+            fetch(googleScriptURL, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({name, studentNumber, score})
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
         }
     </script>
 </body>
